@@ -1,0 +1,138 @@
+# Arduino-
+#include <Servo.h> 
+
+Servo servo1;         
+
+int estado=0;
+int retraso=100;
+int analogo=0;
+
+void setup(){
+
+  servo1.attach(4);
+  servo2.attach(2);
+  pinMode(13,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(8,OUTPUT);
+
+  Serial.begin(9600);
+
+  delay(1000);
+
+ }
+
+ void loop(){
+ if(Serial.available()>0){           
+        estado = Serial.read();      
+ }
+     
+// LED N°1
+
+ if(estado== 'a'){                    
+       digitalWrite(13,HIGH);
+ }
+
+ if(estado== 'b' ){
+       digitalWrite(13,LOW);
+ }
+
+
+
+// LED N°2
+
+ if(estado== 'c'){ 
+       digitalWrite(12,HIGH);
+ }
+
+ if(estado== 'd' ){
+       digitalWrite(12,LOW);
+ }
+
+
+// LED N°3
+
+ if(estado== 'e'){ 
+       digitalWrite(11,HIGH);
+ }
+
+ if(estado== 'f' ){
+       digitalWrite(11,LOW);
+ }
+
+
+// LED N°4
+
+ if(estado== 'g' ){
+       digitalWrite(10,HIGH);
+ }
+
+ if(estado== 'h' ){
+       digitalWrite(10,LOW);
+ }
+
+// LED N°5
+
+ if(estado== 'i' ){
+        digitalWrite(9,HIGH);
+ }
+
+ if(estado== 'j' ){
+       digitalWrite(9,LOW);
+      }
+
+
+// LED N°6
+
+ if(estado== 'k' ){
+        digitalWrite(8,HIGH);
+ }
+
+ if(estado== 'l' ){
+      digitalWrite(8,LOW);
+ }
+
+
+
+// SERVOMOTORES
+
+// SERVO N°1 
+
+ if(estado== 'A' ){      
+      servo1.write(0);  
+      }
+ if(estado== 'B' ){
+      servo1.write(90); 
+      }
+ if(estado== 'C' ){
+      servo1.write(180);  
+      }
+
+// SERVO N°2
+
+
+ if(estado== 'D' ){      
+      servo2.write(0);  
+      }
+ if(estado== 'E' ){
+      servo2.write(90); 
+      }
+ if(estado== 'F' ){
+      servo2.write(180);  
+      }
+
+      
+
+if(estado=='q'){         
+  analogo=analogRead(A0);
+  Serial.print(analogo);
+  Serial.println("°C");
+  delay (retraso);
+  estado=0;
+ }
+ delay(retraso);
+ }
+ 
+ 
