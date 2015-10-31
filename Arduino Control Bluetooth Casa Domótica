@@ -2,6 +2,7 @@
 #include <Servo.h> 
 
 Servo servo1;         
+Servo servo2;
 
 int estado=0;
 int retraso=100;
@@ -125,10 +126,9 @@ void setup(){
 
       
 
-if(estado=='q'){         
+if(estado=='G'){         
   analogo=analogRead(A0);
   Serial.print(analogo);
-  Serial.println("°C");
   delay (retraso);
   estado=0;
  }
